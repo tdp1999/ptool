@@ -1,10 +1,10 @@
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'p-header',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, NgOptimizedImage],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
