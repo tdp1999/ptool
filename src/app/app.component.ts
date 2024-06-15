@@ -1,11 +1,20 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {
+  AfterRenderPhase,
+  Component,
+  DestroyRef,
+  OnDestroy,
+  OnInit,
+  afterNextRender,
+  inject,
+} from '@angular/core';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import {
   BreakpointObserver,
   Breakpoints,
   LayoutModule,
 } from '@angular/cdk/layout';
-import { Subscription } from 'rxjs';
+import { Subscription, filter } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   standalone: true,
@@ -14,36 +23,25 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit, OnDestroy {
-  title = 'ptool';
-  subscription: Subscription | undefined;
-  breakpointObserver = inject(BreakpointObserver);
+export class AppComponent {
+  private router = inject(Router);
+  private destroyRef = inject(DestroyRef);
 
-  displayNameMap = new Map([
-    [Breakpoints.XSmall, 'XSmall'],
-    [Breakpoints.Small, 'Small'],
-    [Breakpoints.Medium, 'Medium'],
-    [Breakpoints.Large, 'Large'],
-    [Breakpoints.XLarge, 'XLarge'],
-  ]);
-
-  ngOnInit(): void {
-    this.subscription = this.breakpointObserver
-      .observe([
-        Breakpoints.XSmall,
-        Breakpoints.Small,
-        Breakpoints.Medium,
-        Breakpoints.Large,
-        Breakpoints.XLarge,
-      ])
-      .subscribe((result) => {
-        for (const query of Object.keys(result.breakpoints)) {
-          console.log('Query', query, 'Matches', result.breakpoints[query]);
-        }
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+  constructor() {
+    afterNextRender(
+      () => {
+        this.router.events
+          .pipe(
+            filter((event) => event instanceof NavigationEnd),
+            takeUntilDestroyed(this.destroyRef)
+          )
+          .subscribe(() => {
+            setTimeout(() => {
+              window.HSStaticMethods.autoInit();
+            }, 100);
+          });
+      },
+      { phase: AfterRenderPhase.Read }
+    );
   }
 }

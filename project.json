@@ -17,13 +17,14 @@
         "tsConfig": "tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
+          "src/assets",
           {
             "glob": "**/*",
             "input": "public"
           }
         ],
         "styles": ["./src/styles.scss"],
-        "scripts": [],
+        "scripts": ["node_modules/preline/preline.js"],
         "server": "src/main.server.ts",
         "prerender": true,
         "ssr": {
