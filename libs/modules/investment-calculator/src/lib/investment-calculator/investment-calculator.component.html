@@ -1,0 +1,38 @@
+<h1>Investment Calculator</h1>
+
+<p>
+    The Investment Calculator can be used to calculate a specific parameter for
+    an investment plan. The tabs represent the desired parameter to be found.
+    For example, to calculate the return rate needed to reach an investment goal
+    with particular inputs, click the 'Return Rate' tab.
+</p>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <input
+        type="number"
+        name="startingAmount"
+        formControlName="startingAmount"
+    />
+    <input type="number" name="duration" formControlName="duration" />
+    <input type="number" name="returnRate" formControlName="returnRate" />
+    <select name="compoundPeriod">
+        @for (period of compoundPeriod; track $index) {
+        <option [value]="period.value">
+            {{ period.viewValue }}
+        </option>
+        }
+    </select>
+    <input
+        type="number"
+        name="additionalContribution"
+        formControlName="additionalContribution"
+    />
+
+    <button
+        class="p-button p-button--solid"
+        [disabled]="form.invalid"
+        type="submit"
+    >
+        Calculate
+    </button>
+</form>

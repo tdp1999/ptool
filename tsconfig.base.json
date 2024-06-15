@@ -15,7 +15,11 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@layout": ["libs/layout/src/index.ts"]
+            "@layout": ["libs/layout/src/index.ts"],
+            "@modules/investment-calculator": [
+                "libs/modules/investment-calculator/src/index.ts"
+            ],
+            "@shared/data-access": ["libs/shared/data-access/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

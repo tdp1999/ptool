@@ -1,9 +1,21 @@
 import { Route } from '@angular/router';
+import { ROUTES } from '@shared/data-access';
 
 export const appRoutes: Route[] = [
     {
         path: '',
+        redirectTo: ROUTES.INVESTMENT_CALCULATOR,
+        pathMatch: 'full',
+    },
+    {
+        path: ROUTES.INVESTMENT_CALCULATOR,
         loadComponent: () =>
-            import('./test.component').then((m) => m.TestComponent),
+            import('@modules/investment-calculator').then(
+                (m) => m.InvestmentCalculatorComponent
+            ),
+    },
+    {
+        path: '**',
+        redirectTo: '',
     },
 ];
