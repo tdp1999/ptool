@@ -1,0 +1,19 @@
+.p-button {
+    @apply py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border disabled:pointer-events-none disabled:opacity-50 border-transparent;
+
+    &.p-button--solid {
+        @apply bg-primary-container text-on-primary-container hover:bg-primary;
+    }
+
+    &.p-button--outline {
+        @apply border-outline text-primary-container hover:border-primary hover:text-primary;
+    }
+
+    &.p-button--ghost {
+        @apply text-primary-container hover:bg-primary-container hover:text-on-primary-container;
+    }
+
+    &.p-button--link {
+        @apply text-primary-container hover:text-primary;
+    }
+}

@@ -1,182 +1,26 @@
+<p-header></p-header>
+
 <router-outlet></router-outlet>
-<div class="grid h-full place-items-center">
-    <!-- <div
-        class="flex flex-col bg-white border shadow-sm max-w-96 rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
-    >
-        <img
-            class="w-full h-auto rounded-t-xl"
-            src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2532&q=80"
-            alt="Image Description"
-        />
-        <div class="p-4 md:p-5">
-            <h3 class="text-lg font-bold text-gray-800 dark:text-white">
-                Card title
-            </h3>
-            <p class="mt-1 text-gray-500 dark:text-neutral-400">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-            </p>
-            <a
-                class="inline-flex items-center justify-center px-3 py-2 mt-2 text-sm font-semibold text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                href="#"
-            >
-                Go somewhere
-            </a>
-        </div>
-    </div> -->
 
-    <div class="hs-accordion-group">
-        <div class="hs-accordion active" id="hs-basic-heading-one">
-            <button
-                class="inline-flex items-center w-full py-3 font-semibold text-gray-800 rounded-lg hs-accordion-toggle hs-accordion-active:text-blue-600 gap-x-3 text-start hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400"
-                aria-controls="hs-basic-collapse-one"
-            >
-                <svg
-                    class="hs-accordion-active:hidden block size-3.5"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5v14"></path>
-                </svg>
-                <svg
-                    class="hs-accordion-active:block hidden size-3.5"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M5 12h14"></path>
-                </svg>
-                Accordion #1
-            </button>
-            <div
-                id="hs-basic-collapse-one"
-                class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
-                aria-labelledby="hs-basic-heading-one"
-            >
-                <p class="text-gray-800 dark:text-neutral-200">
-                    <em>This is the third item's accordion body.</em> It is
-                    hidden by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions.
-                </p>
-            </div>
-        </div>
+<p-footer></p-footer>
 
-        <div class="hs-accordion" id="hs-basic-heading-two">
-            <button
-                class="inline-flex items-center w-full py-3 font-semibold text-gray-800 rounded-lg hs-accordion-toggle hs-accordion-active:text-blue-600 gap-x-3 text-start hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400"
-                aria-controls="hs-basic-collapse-two"
-            >
-                <svg
-                    class="hs-accordion-active:hidden block size-3.5"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5v14"></path>
-                </svg>
-                <svg
-                    class="hs-accordion-active:block hidden size-3.5"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M5 12h14"></path>
-                </svg>
-                Accordion #2
-            </button>
-            <div
-                id="hs-basic-collapse-two"
-                class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
-                aria-labelledby="hs-basic-heading-two"
-            >
-                <p class="text-gray-800 dark:text-neutral-200">
-                    <em>This is the third item's accordion body.</em> It is
-                    hidden by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions.
-                </p>
-            </div>
-        </div>
+<!-- <div class="grid h-full place-items-center bg-surface">
+    <div>
+        <div>
+            <label for="theme" class="block text-sm font-medium text-gray-900">
+                Headliner
+            </label>
 
-        <div class="hs-accordion" id="hs-basic-heading-three">
-            <button
-                class="inline-flex items-center w-full py-3 font-semibold text-gray-800 rounded-lg hs-accordion-toggle hs-accordion-active:text-blue-600 gap-x-3 text-start hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400"
-                aria-controls="hs-basic-collapse-three"
+            <select
+                name="theme"
+                id="theme"
+                [formControl]="themeSeletor"
+                class="mt-1.5 w-full rounded-lg border-gray-300 text-gray-700 sm:text-sm"
             >
-                <svg
-                    class="hs-accordion-active:hidden block size-3.5"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5v14"></path>
-                </svg>
-                <svg
-                    class="hs-accordion-active:block hidden size-3.5"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M5 12h14"></path>
-                </svg>
-                Accordion #3
-            </button>
-            <div
-                id="hs-basic-collapse-three"
-                class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
-                aria-labelledby="hs-basic-heading-three"
-            >
-                <p class="text-gray-800 dark:text-neutral-200">
-                    <em>This is the third item's accordion body.</em> It is
-                    hidden by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions.
-                </p>
-            </div>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
         </div>
     </div>
-</div>
+    <div class="text-primary">hello world</div>
+</div> -->
