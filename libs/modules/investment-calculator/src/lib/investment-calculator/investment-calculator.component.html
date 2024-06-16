@@ -9,9 +9,10 @@
 
 <form [formGroup]="form" (ngSubmit)="submit()">
     <input
-        type="number"
+        type="text"
         name="startingAmount"
         formControlName="startingAmount"
+        mask="separator.2"
     />
     <input type="number" name="duration" formControlName="duration" />
     <input type="number" name="returnRate" formControlName="returnRate" />

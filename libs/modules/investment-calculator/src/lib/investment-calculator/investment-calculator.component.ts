@@ -2,11 +2,12 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { COMPOUND_PERIOD } from '@shared/data-access';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
     selector: 'p-investment-calculator',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [CommonModule, ReactiveFormsModule, NgxMaskDirective],
     templateUrl: './investment-calculator.component.html',
     styleUrl: './investment-calculator.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
