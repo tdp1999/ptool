@@ -1,62 +1,29 @@
-<div data-name="form-field-wrapper">
-    <label class="block mb-2 text-sm font-medium dark:text-white">
-        <ng-content select="p-label"></ng-content>
-    </label>
+<div class="">
+    <ng-content select="p-label"></ng-content>
+
+    {{ hasError() }}
 
     <div class="relative">
         <div
             class="absolute inset-y-0 flex items-center pointer-events-none end-0 pe-3"
         >
-            <!-- <svg
-                class="flex-shrink-0 text-red-500 size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" x2="12" y1="8" y2="12"></line>
-                <line x1="12" x2="12.01" y1="16" y2="16"></line>
-            </svg> -->
-
             <ng-content select="p-prefix"></ng-content>
         </div>
 
-        <ng-content></ng-content>
-
-        <!-- <input
-            type="text"
-            id="hs-validation-name-error"
-            name="hs-validation-name-error"
-            class="block w-full px-4 py-3 text-sm border-red-500 rounded-lg focus:border-red-500 focus:ring-red-500 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400"
-            required=""
-            aria-describedby="hs-validation-name-error-helper"
-        /> -->
+        <div
+            class="block w-full px-4 py-3 text-sm rounded-lg form-input dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400"
+            [ngClass]="{
+                'ps-11': hasPrefix,
+                'pe-8': hasSuffix,
+                'border-red-500 focus-within:ring-red-500 ': hasError()
+            }"
+        >
+            <ng-content></ng-content>
+        </div>
 
         <div
             class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none"
         >
-            <!-- <svg
-                class="flex-shrink-0 text-gray-500 size-4 dark:text-neutral-500"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg> -->
-
             <ng-content select="p-suffix"></ng-content>
         </div>
     </div>

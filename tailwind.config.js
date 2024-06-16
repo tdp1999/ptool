@@ -15,5 +15,5 @@ module.exports = {
             colors: EXTENDED_COLOR,
         },
     },
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [require('@tailwindcss/forms')({ strategy: 'class' })],
 };

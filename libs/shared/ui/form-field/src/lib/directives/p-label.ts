@@ -1,7 +1,11 @@
-import { Directive } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-@Directive({
+@Component({
     selector: 'p-label',
     standalone: true,
+    template:
+        '<label [attr.for]="for" class="block mb-2 text-sm font-medium dark:text-white"><ng-content></ng-content></label>',
 })
-export class PLabel {}
+export class PLabel {
+    @Input() for!: string;
+}
