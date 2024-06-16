@@ -19,7 +19,8 @@
             "@modules/investment-calculator": [
                 "libs/modules/investment-calculator/src/index.ts"
             ],
-            "@shared/data-access": ["libs/shared/data-access/src/index.ts"]
+            "@shared/data-access": ["libs/shared/data-access/src/index.ts"],
+            "@shared/ui/form-field": ["libs/shared/ui/form-field/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

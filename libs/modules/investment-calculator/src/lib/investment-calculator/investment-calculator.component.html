@@ -7,7 +7,36 @@
     with particular inputs, click the 'Return Rate' tab.
 </p>
 
+<div class="max-w-sm space-y-4">
+    <p-form-field>
+        <p-label>Email</p-label>
+        <p-prefix icon="person"></p-prefix>
+        <p-suffix icon="info"></p-suffix>
+        <p-error>Please enter a valid email address.</p-error>
+
+        <input
+            type="text"
+            id="hs-validation-name-error"
+            name="hs-validation-name-error"
+            class="block w-full px-4 py-3 text-sm border-red-500 rounded-lg focus:border-red-500 focus:ring-red-500 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400"
+            required=""
+            aria-describedby="hs-validation-name-error-helper"
+        />
+    </p-form-field>
+</div>
+
 <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="max-w-sm">
+        <label for="input-email-label" class="sr-only">Email</label>
+        <input
+            type="email"
+            id="input-email-label"
+            name="email"
+            class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+            placeholder="you@site.com"
+        />
+    </div>
+
     <input
         type="text"
         name="startingAmount"
