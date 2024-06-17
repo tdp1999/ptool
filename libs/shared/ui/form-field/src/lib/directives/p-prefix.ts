@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
     selector: 'p-prefix',
     standalone: true,
     template:
-        '<img class="flex-shrink-0 text-gray-500 size-4 dark:text-neutral-500" [src]="icon" alt="_iconName">',
+        '<img class="flex-shrink-0 text-red-500 size-4 dark:text-neutral-500" [src]="icon" alt="_iconName">',
 })
 export class PPrefix {
     @Input({ required: true })

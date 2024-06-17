@@ -1,11 +1,9 @@
 <div class="">
     <ng-content select="p-label"></ng-content>
 
-    {{ hasError() }}
-
     <div class="relative">
         <div
-            class="absolute inset-y-0 flex items-center pointer-events-none end-0 pe-3"
+            class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3"
         >
             <ng-content select="p-prefix"></ng-content>
         </div>
@@ -13,22 +11,28 @@
         <div
             class="block w-full px-4 py-3 text-sm rounded-lg form-input dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400"
             [ngClass]="{
-                'ps-11': hasPrefix,
-                'pe-8': hasSuffix,
-                'border-red-500 focus-within:ring-red-500 ': hasError()
+                'ps-11': hasPrefix(),
+                'pe-8': hasSuffix(),
+                'border-red-500 focus-within:ring-red-500 ':
+                    input()?.errorState()
             }"
         >
             <ng-content></ng-content>
         </div>
 
         <div
-            class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none"
+            class="absolute inset-y-0 flex items-center pointer-events-none end-0 pe-3 peer-disabled:opacity-50 peer-disabled:pointer-events-none"
         >
             <ng-content select="p-suffix"></ng-content>
         </div>
     </div>
 
-    <p class="mt-2 text-sm text-red-600" id="hs-validation-name-error-helper">
+    @if (hasError()) {
+    <p
+        class="mt-1 text-sm text-red-600"
+        [@transitionMessages]="_subscriptAnimationState()"
+    >
         <ng-content select="p-error"></ng-content>
     </p>
+    }
 </div>

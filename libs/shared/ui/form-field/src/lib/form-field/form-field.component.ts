@@ -1,58 +1,42 @@
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import {
-    AfterContentInit,
     AfterViewInit,
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
-    DestroyRef,
-    OnInit,
-    inject,
+    computed,
+    contentChild,
+    contentChildren,
     signal,
 } from '@angular/core';
-import { PError } from '../directives/p-error';
-import { PInput } from '../directives/p-input';
-import { PLabel } from '../directives/p-label';
-import { PPrefix } from '../directives/p-prefix';
-import { PSuffix } from '../directives/p-suffix';
-import { NgControl } from '@angular/forms';
+import { FormFieldAnimations } from '../core';
+import { PError, PInput, PLabel, PPrefix, PSuffix } from '../directives';
 
 @Component({
     selector: 'p-form-field',
     standalone: true,
-    imports: [CommonModule, PLabel, PError, PPrefix, PSuffix],
+    imports: [CommonModule],
     templateUrl: './form-field.component.html',
     styleUrl: './form-field.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [FormFieldAnimations.transitionMessages],
 })
-export class FormFieldComponent implements AfterContentInit, OnInit {
-    @ContentChild(PLabel) _label: PLabel | undefined;
-    @ContentChild(PError) _error: PError | undefined;
-    @ContentChild(PPrefix) _prefix: PPrefix | undefined;
-    @ContentChild(PSuffix) _suffix: PSuffix | undefined;
-    @ContentChild(PInput) _input: PInput | undefined;
+export class FormFieldComponent implements AfterViewInit {
+    protected input = contentChild(PInput);
+    protected prefix = contentChild(PPrefix);
+    protected suffix = contentChild(PSuffix);
+    protected label = contentChild(PLabel);
+    protected errors = contentChildren(PError, { descendants: true });
 
-    private _ngControl = inject(NgControl, { optional: true, self: true });
-    private _destroyRef = inject(DestroyRef);
+    protected hasPrefix = computed(() => !!this.prefix());
+    protected hasSuffix = computed(() => !!this.suffix());
+    protected hasError = computed(() => {
+        return this.errors().length > 0 && this.input()?.errorState();
+    });
 
-    protected hasPrefix = false;
-    protected hasSuffix = false;
-    protected hasError = signal(false);
+    protected _subscriptAnimationState = signal<string>('');
 
-    ngOnInit(): void {
-        this.hasError.set(!!this._ngControl?.statusChanges);
-    }
-
-    ngAfterContentInit(): void {
-        this.hasPrefix = !!this._prefix;
-        this.hasSuffix = !!this._suffix;
-
-        console.log(this._ngControl);
-        this._ngControl?.statusChanges
-            ?.pipe(takeUntilDestroyed(this._destroyRef))
-            .subscribe((value) => {
-                console.log(value);
-            });
+    ngAfterViewInit(): void {
+        // Enable animations now. This ensures we don't animate on initial render.
+        this._subscriptAnimationState.set('enter');
     }
 }
