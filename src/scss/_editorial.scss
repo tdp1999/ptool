@@ -1,0 +1,66 @@
+h1,
+.h1 {
+    @apply text-3xl font-extrabold after:block after:w-1/3 after:h-1 after:mt-4 after:mx-auto;
+
+    &--start {
+        @apply after:mr-auto after:ml-0;
+    }
+
+    &--light {
+        @apply font-light;
+    }
+}
+
+h2,
+.h3 {
+    @apply text-xl font-semibold;
+}
+
+h3,
+.h3 {
+    @apply text-lg font-semibold;
+
+    &--light {
+        @apply font-light;
+    }
+}
+
+p,
+.p {
+    @apply text-sm leading-6;
+}
+
+.body {
+    @apply text-sm md:text-base font-normal;
+}
+
+.caption {
+    @apply text-xs md:text-sm font-normal uppercase;
+}
+
+.caption-value {
+    @apply text-xs md:text-sm font-normal;
+}
+
+.subtitle {
+    @apply text-sm md:text-base font-medium;
+}
+
+.list-title {
+    @apply text-sm md:text-base font-semibold;
+}
+
+.list-value {
+    @apply text-sm md:text-base font-normal;
+}
+
+// ul,
+// ol,
+// .ul,
+// .ol {
+//     @apply list-disc list-inside flex flex-col gap-1 text-sm md:text-base leading-6;
+// }
+
+strong {
+    @apply font-semibold;
+}

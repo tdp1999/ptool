@@ -20,7 +20,7 @@ import { PError, PInput, PLabel, PPrefix, PSuffix } from '../directives';
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [FormFieldAnimations.transitionMessages],
 })
-export class FormFieldComponent implements AfterViewInit {
+export class FormField implements AfterViewInit {
     protected input = contentChild(PInput);
     protected prefix = contentChild(PPrefix);
     protected suffix = contentChild(PSuffix);

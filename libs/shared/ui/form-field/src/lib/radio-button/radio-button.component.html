@@ -1,0 +1,43 @@
+<div>
+    <!-- <div class="mdc-radio" [class.mdc-radio--disabled]="disabled">
+        <div
+            class="mat-mdc-radio-touch-target"
+            (click)="_onTouchTargetClick($event)"
+        ></div>
+        <input
+            #input
+            class="mdc-radio__native-control"
+            type="radio"
+            [id]="inputId"
+            [checked]="checked"
+            [disabled]="disabled"
+            [attr.name]="name"
+            [attr.value]="value"
+            [required]="required"
+            (change)="_onInputInteraction($event)"
+        />
+        <div class="mdc-radio__background">
+            <div class="mdc-radio__outer-circle"></div>
+            <div class="mdc-radio__inner-circle"></div>
+        </div>
+        <div class="mat-radio-ripple mat-mdc-focus-indicator">
+            <div class="mat-ripple-element mat-radio-persistent-ripple"></div>
+        </div>
+    </div> -->
+
+    <div class="flex items-center">
+        <input
+            type="radio"
+            [attr.name]="name"
+            [checked]="checked"
+            [attr.value]="value"
+            name="hs-default-radio"
+            class="text-blue-600 border-gray-200 rounded-full form-radio shrink-0 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+        />
+        <label
+            for="test"
+            class="text-sm text-gray-500 ms-2 dark:text-neutral-400"
+            ><ng-content></ng-content
+        ></label>
+    </div>
+</div>

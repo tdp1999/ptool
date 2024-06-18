@@ -10,7 +10,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { FooterComponent, HeaderComponent } from '@layout';
+import { FooterComponent, HeaderComponent, SidebarComponent } from '@layout';
 import { startWith } from 'rxjs';
 
 @Component({
@@ -21,6 +21,7 @@ import { startWith } from 'rxjs';
         ReactiveFormsModule,
         HeaderComponent,
         FooterComponent,
+        SidebarComponent,
     ],
     selector: 'app-root',
     templateUrl: './app.component.html',

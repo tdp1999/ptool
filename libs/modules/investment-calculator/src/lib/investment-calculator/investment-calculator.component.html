@@ -7,48 +7,148 @@
     with particular inputs, click the 'Return Rate' tab.
 </p>
 
-<form [formGroup]="form" (ngSubmit)="submit()" class="grid grid-cols-2">
-    <p-form-field>
-        <p-label for="email">Email</p-label>
-        <p-prefix icon="person"></p-prefix>
-        <p-suffix icon="info"></p-suffix>
-        <p-error>Please enter a valid email address.</p-error>
+<form [formGroup]="form" (ngSubmit)="submit()" class="flex gap-x-8">
+    <div class="flex flex-col gap-y-4">
+        <p-form-field>
+            <p-label for="startingAmount">Starting Amount</p-label>
 
-        <input
-            pInput
-            formControlName="email"
-            type="text"
-            name="email"
-            placeholder="Email"
-        />
-    </p-form-field>
+            <input
+                pInput
+                type="text"
+                name="startingAmount"
+                formControlName="startingAmount"
+                mask="separator.2"
+                placeholder="Starting Amount"
+                prefix="$ "
+            />
 
-    <input
-        type="text"
-        name="startingAmount"
-        formControlName="startingAmount"
-        mask="separator.2"
-    />
-    <input type="number" name="duration" formControlName="duration" />
-    <input type="number" name="returnRate" formControlName="returnRate" />
-    <select name="compoundPeriod">
-        @for (period of compoundPeriod; track $index) {
-        <option [value]="period.value">
-            {{ period.viewValue }}
-        </option>
-        }
-    </select>
-    <input
-        type="number"
-        name="additionalContribution"
-        formControlName="additionalContribution"
-    />
+            @if (form.controls.startingAmount.hasError('required')) {
+            <p-error>This field is required</p-error>
+            }
+        </p-form-field>
 
-    <button
-        class="p-button p-button--solid"
-        [disabled]="form.invalid"
-        type="submit"
-    >
-        Calculate
-    </button>
+        <p-form-field>
+            <p-label for="investLength">After</p-label>
+            <input
+                pInput
+                type="text"
+                name="investLength"
+                formControlName="investLength"
+                placeholder="Duration"
+                mask="99"
+                suffix=" year(s)"
+            />
+
+            @if (form.controls.investLength.hasError('required')) {
+            <p-error>This field is required</p-error>
+            }
+        </p-form-field>
+
+        <p-form-field>
+            <p-label for="returnRate">Return Rate</p-label>
+            <input
+                pInput
+                type="text"
+                name="returnRate"
+                formControlName="returnRate"
+                placeholder="Return Rate"
+                mask="percent.2"
+                suffix="%"
+            />
+
+            @if (form.controls.returnRate.hasError('required')) {
+            <p-error>This field is required</p-error>
+            } @if (form.controls.returnRate.hasError('min')) {
+            <p-error>This field must be greater than 0</p-error>
+            }
+        </p-form-field>
+
+        <p-form-field>
+            <p-label for="compoundPeriod">Compound</p-label>
+            <select
+                pInput
+                name="compoundPeriod"
+                formControlName="compoundPeriod"
+                placeholder="Compound Period"
+            >
+                @for (period of compoundPeriod; track $index) {
+                <option [value]="period.value">
+                    {{ period.viewValue }}
+                </option>
+                }
+            </select>
+        </p-form-field>
+
+        <p-form-field>
+            <p-label for="contributeAmount">Additional Contribution</p-label>
+            <input
+                pInput
+                type="text"
+                name="contributeAmount"
+                formControlName="contributeAmount"
+                placeholder="Additional Contribution"
+                mask="separator.2"
+                [allowNegativeNumbers]="false"
+                prefix="$ "
+            />
+
+            @if (form.controls.contributeAmount.hasError('required')) {
+            <p-error>This field is required</p-error>
+            }
+        </p-form-field>
+
+        <div class="flex items-center">
+            <input
+                type="radio"
+                name="hs-default-radio"
+                class="text-blue-600 border-gray-200 rounded-full form-radio shrink-0 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                id="hs-default-radio"
+            />
+            <label
+                for="test"
+                class="text-sm text-gray-500 ms-2 dark:text-neutral-400"
+                >Default radio</label
+            >
+        </div>
+
+        <div class="flex items-center">
+            <input
+                type="radio"
+                name="hs-default-radio"
+                class="text-blue-600 border-gray-200 rounded-full form-radio shrink-0 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                id="hs-checked-radio"
+                checked=""
+            />
+            <label
+                for="hs-checked-radio"
+                class="text-sm text-gray-500 ms-2 dark:text-neutral-400"
+                >Checked radio</label
+            >
+        </div>
+
+        <button
+            class="justify-between p-button p-button--solid"
+            [disabled]="form.invalid"
+            type="submit"
+        >
+            <span>Calculate</span>
+
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-4"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                />
+            </svg>
+        </button>
+    </div>
+
+    <div></div>
 </form>

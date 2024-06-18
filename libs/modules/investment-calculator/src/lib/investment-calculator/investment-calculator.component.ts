@@ -25,11 +25,10 @@ export class InvestmentCalculatorComponent {
 
     public form = this.fb.group({
         startingAmount: [20000, Validators.required],
-        duration: [10, Validators.required],
+        investLength: [10, Validators.required],
         returnRate: [6, Validators.required],
         compoundPeriod: [COMPOUND_PERIOD[2].value, Validators.required],
-        additionalContribution: [1000, Validators.required],
-        email: ['', Validators.email],
+        contributeAmount: [1000, Validators.required],
     });
 
     submit() {
