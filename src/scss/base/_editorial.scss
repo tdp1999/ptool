@@ -30,6 +30,10 @@ p,
     @apply text-sm leading-6;
 }
 
+a {
+    @apply text-sm hover:underline;
+}
+
 .body {
     @apply text-sm md:text-base font-normal;
 }

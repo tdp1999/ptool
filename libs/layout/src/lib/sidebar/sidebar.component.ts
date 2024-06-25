@@ -1,12 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { ROUTES } from '@shared/data-access';
 
 @Component({
     selector: 'p-sidebar',
     standalone: true,
-    imports: [CommonModule],
+    imports: [RouterModule],
     templateUrl: './sidebar.component.html',
     styleUrl: './sidebar.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SidebarComponent {}
+export class SidebarComponent {
+    routes = ROUTES;
+}

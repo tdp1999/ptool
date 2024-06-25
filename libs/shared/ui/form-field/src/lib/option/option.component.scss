@@ -1,0 +1,5 @@
+:host {
+    &.option-disabled {
+        @apply opacity-50 cursor-default;
+    }
+}

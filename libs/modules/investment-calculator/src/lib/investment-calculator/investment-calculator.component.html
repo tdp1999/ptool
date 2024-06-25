@@ -97,34 +97,37 @@
             }
         </p-form-field>
 
-        <div class="flex items-center">
-            <input
-                type="radio"
-                name="hs-default-radio"
-                class="text-blue-600 border-gray-200 rounded-full form-radio shrink-0 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                id="hs-default-radio"
-            />
-            <label
-                for="test"
-                class="text-sm text-gray-500 ms-2 dark:text-neutral-400"
-                >Default radio</label
+        <p-form-field>
+            <p-label for="compoundPeriod">Contribute At</p-label>
+            <select
+                pInput
+                name="contributeTiming"
+                formControlName="contributeTiming"
+                placeholder="Compound Period"
             >
-        </div>
+                @for (period of contributeTiming; track $index) {
+                <option [value]="period.value">
+                    {{ period.viewValue }}
+                </option>
+                }
+            </select>
+        </p-form-field>
 
-        <div class="flex items-center">
-            <input
-                type="radio"
-                name="hs-default-radio"
-                class="text-blue-600 border-gray-200 rounded-full form-radio shrink-0 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                id="hs-checked-radio"
-                checked=""
-            />
-            <label
-                for="hs-checked-radio"
-                class="text-sm text-gray-500 ms-2 dark:text-neutral-400"
-                >Checked radio</label
+        <p-form-field>
+            <p-label for="contributeFrequency">Of each</p-label>
+            <select
+                pInput
+                name="contributeFrequency"
+                formControlName="contributeFrequency"
+                placeholder="Compound Period"
             >
-        </div>
+                @for (period of contributeFrequency; track $index) {
+                <option [value]="period.value">
+                    {{ period.viewValue }}
+                </option>
+                }
+            </select>
+        </p-form-field>
 
         <button
             class="justify-between p-button p-button--solid"

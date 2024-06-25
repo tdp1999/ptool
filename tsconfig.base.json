@@ -19,6 +19,7 @@
             "@modules/investment-calculator": [
                 "libs/modules/investment-calculator/src/index.ts"
             ],
+            "@modules/playground": ["libs/modules/playground/src/index.ts"],
             "@shared/core": ["libs/shared/core/src/index.ts"],
             "@shared/data-access": ["libs/shared/data-access/src/index.ts"],
             "@shared/ui/form-field": ["libs/shared/ui/form-field/src/index.ts"]

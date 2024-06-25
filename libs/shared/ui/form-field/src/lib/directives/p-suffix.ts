@@ -3,8 +3,11 @@ import { Component, Input } from '@angular/core';
 @Component({
     selector: 'p-suffix',
     standalone: true,
-    template:
-        '<img class="flex-shrink-0 text-gray-500 size-4 dark:text-neutral-500" [src]="icon" alt="_iconName">',
+    template: `<img
+        class="flex-shrink-0 text-gray-500 size-4 dark:text-neutral-500"
+        [src]="icon"
+        alt="_iconName"
+    />`,
 })
 export class PSuffix {
     @Input({ required: true })

@@ -3,8 +3,11 @@ import { Component, Input } from '@angular/core';
 @Component({
     selector: 'p-prefix',
     standalone: true,
-    template:
-        '<img class="flex-shrink-0 text-red-500 size-4 dark:text-neutral-500" [src]="icon" alt="_iconName">',
+    template: ` <img
+        class="flex-shrink-0 text-red-500 size-4 dark:text-neutral-500"
+        [src]="icon"
+        alt="_iconName"
+    />`,
 })
 export class PPrefix {
     @Input({ required: true })
