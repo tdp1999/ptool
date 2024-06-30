@@ -1,44 +1,107 @@
 <h1>Investment Calculator</h1>
 
 <p>
-    The Investment Calculator can be used to calculate a specific parameter for
-    an investment plan. The tabs represent the desired parameter to be found.
-    For example, to calculate the return rate needed to reach an investment goal
-    with particular inputs, click the 'Return Rate' tab.
+    The Investment Calculator can be used to calculate a specific parameter for an investment plan. The tabs represent
+    the desired parameter to be found. For example, to calculate the return rate needed to reach an investment goal with
+    particular inputs, click the 'Return Rate' tab.
 </p>
 
-<form [formGroup]="form" (ngSubmit)="submit()" class="flex gap-x-8">
-    <div class="flex flex-col gap-y-4">
-        <button
-            mat-button
-            class="justify-between p-button p-button--solid"
-            [disabled]="form.invalid"
-            type="submit"
-        >
-            <span>Calculate</span>
+<div class="flex mt-4">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-col gap-y-1 basis-1/3">
+        <mat-form-field>
+            <mat-label>Starting Amount</mat-label>
+            <span matTextPrefix>$&nbsp;</span>
+            <input
+                type="text"
+                mask="separator.2"
+                matInput
+                formControlName="startingAmount"
+                [allowNegativeNumbers]="true"
+            />
 
-            <!-- <mat-icon iconPositionEnd>arrow_forward</mat-icon> -->
-            <mat-icon iconPositionEnd
-                ><svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-4"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                    />
-                </svg>
-            </mat-icon>
-        </button>
-        <button mat-button [disabled]="form.invalid" type="submit">
+            @if ( form.controls.startingAmount.hasError('required') ) {
+            <mat-error>{{ 'REQUIRED' | errorMessage }}</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>After</mat-label>
+            <input type="text" mask="separator.0" matInput formControlName="investLength" />
+            <span matTextSuffix>years</span>
+
+            @if ( form.controls.investLength.hasError('required') ) {
+            <mat-error>{{ 'REQUIRED' | errorMessage }}</mat-error>
+            } @if ( form.controls.investLength.hasError('min') ) {
+            <mat-error>{{ 'MIN_VALUE' | errorMessage : form.controls.investLength.getError('min').min }}</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Return Rate</mat-label>
+            <input type="text" mask="percent.2" matInput formControlName="returnRate" [allowNegativeNumbers]="true" />
+            <span matTextSuffix>%</span>
+
+            @if ( form.controls.returnRate.hasError('required') ) {
+            <mat-error>{{ 'REQUIRED' | errorMessage }}</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Compound Period</mat-label>
+            <mat-select formControlName="compoundPeriod">
+                <mat-option *ngFor="let period of compoundPeriod" [value]="period.value">
+                    {{ period.viewValue }}
+                </mat-option>
+            </mat-select>
+
+            @if ( form.controls.compoundPeriod.hasError('required') ) {
+            <mat-error>{{ 'REQUIRED' | errorMessage }}</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Contribute Amount</mat-label>
+            <span matTextPrefix>$&nbsp;</span>
+            <input
+                type="text"
+                mask="separator.2"
+                matInput
+                formControlName="contributeAmount"
+                [allowNegativeNumbers]="true"
+            />
+            @if ( form.controls.contributeAmount.hasError('required') ) {
+            <mat-error>{{ 'REQUIRED' | errorMessage }}</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Contribute at the</mat-label>
+            <mat-select formControlName="contributeTiming">
+                <mat-option *ngFor="let timing of contributeTiming" [value]="timing.value">
+                    {{ timing.viewValue }}
+                </mat-option>
+            </mat-select>
+            @if ( form.controls.contributeTiming.hasError('required') ) {
+            <mat-error>{{ 'REQUIRED' | errorMessage }}</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Of each</mat-label>
+            <mat-select formControlName="contributeFrequency">
+                <mat-option *ngFor="let frequency of contributeFrequency" [value]="frequency.value">
+                    {{ frequency.viewValue }}
+                </mat-option>
+            </mat-select>
+            @if ( form.controls.contributeFrequency.hasError('required') ) {
+            <mat-error>{{ 'REQUIRED' | errorMessage }}</mat-error>
+            }
+        </mat-form-field>
+
+        <button mat-flat-button [disabled]="form.invalid" type="submit">
             Calculate<mat-icon iconPositionEnd>chevron_right</mat-icon>
         </button>
-    </div>
+    </form>
 
-    <div></div>
-</form>
+    <div class="basis-1/3"></div>
+</div>

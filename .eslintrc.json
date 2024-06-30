@@ -78,7 +78,8 @@
                                 "onlyDependOnLibsWithTags": [
                                     "type:feature",
                                     "type:data-access",
-                                    "type:util"
+                                    "type:util",
+                                    "type:core"
                                 ]
                             }
                         ]

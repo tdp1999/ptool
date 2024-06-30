@@ -4,7 +4,7 @@ import { ROUTES } from '@shared/data-access';
 export const appRoutes: Route[] = [
     {
         path: '',
-        redirectTo: ROUTES.PLAYGROUND,
+        redirectTo: ROUTES.INVESTMENT_CALCULATOR,
         pathMatch: 'full',
     },
     {

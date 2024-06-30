@@ -1,0 +1,4 @@
+// Style to fix the weird border with angular material
+.mdc-notched-outline__notch {
+    border-right: none !important;
+}
