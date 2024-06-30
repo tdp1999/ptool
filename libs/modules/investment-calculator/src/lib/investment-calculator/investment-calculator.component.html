@@ -7,7 +7,7 @@
 </p>
 
 <div class="flex mt-4">
-    <form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-col gap-y-1 basis-1/3">
+    <form [formGroup]="form" (ngSubmit)="submit$.next()" class="flex flex-col gap-y-2 basis-1/3 max-w-52">
         <mat-form-field>
             <mat-label>Starting Amount</mat-label>
             <span matTextPrefix>$&nbsp;</span>
@@ -103,5 +103,14 @@
         </button>
     </form>
 
-    <div class="basis-1/3"></div>
+    <div class="basis-2/3 grow">
+        <p>Result</p>
+
+        @if ( result$ | async; as result) {
+        <p>Starting Amount: {{ result.startingAmount | currency }}</p>
+        <p>Contribute Amount: {{ result.totalContributions | currency }}</p>
+        <p>Total Interest: {{ result.totalInterest | currency }}</p>
+        <p>End Amount: {{ result.endAmount | currency }}</p>
+        }
+    </div>
 </div>
