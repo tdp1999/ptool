@@ -2,4 +2,8 @@
     &.option-disabled {
         @apply opacity-50 cursor-default;
     }
+
+    &.option-active {
+        @apply bg-indigo-600 text-white;
+    }
 }

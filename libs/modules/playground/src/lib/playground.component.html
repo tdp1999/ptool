@@ -1,5 +1,8 @@
-<div class="grid h-full mx-auto max-w-60">
-    <p-select>
+<div [formGroup]="form" class="grid h-full mx-auto max-w-60">
+    <pre>{{ form.value | json }}</pre>
+
+    <p-select formControlName="select">
+        <p-label>Label</p-label>
         <p-option value="1">1</p-option>
         <p-option value="2" disabled>2</p-option>
         <p-option value="3">3</p-option>
