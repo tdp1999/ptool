@@ -8,6 +8,7 @@ import {
 } from '@shared/data-access';
 import { NgxMaskDirective } from 'ngx-mask';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'p-investment-calculator',
@@ -17,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
         ReactiveFormsModule,
         NgxMaskDirective,
         MatButtonModule,
+        MatIconModule,
     ],
     templateUrl: './investment-calculator.component.html',
     styleUrl: './investment-calculator.component.scss',
