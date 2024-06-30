@@ -6,8 +6,8 @@ import {
     CONTRIBUTE_FREQUENCY,
     CONTRIBUTE_TIMING,
 } from '@shared/data-access';
-import { FormFieldModule } from '@shared/ui/form-field';
 import { NgxMaskDirective } from 'ngx-mask';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'p-investment-calculator',
@@ -16,7 +16,7 @@ import { NgxMaskDirective } from 'ngx-mask';
         CommonModule,
         ReactiveFormsModule,
         NgxMaskDirective,
-        FormFieldModule,
+        MatButtonModule,
     ],
     templateUrl: './investment-calculator.component.html',
     styleUrl: './investment-calculator.component.scss',

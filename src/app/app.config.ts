@@ -1,9 +1,9 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { appRoutes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideRouter } from '@angular/router';
 import { provideEnvironmentNgxMask } from 'ngx-mask';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -11,6 +11,7 @@ export const appConfig: ApplicationConfig = {
         provideZoneChangeDetection({ eventCoalescing: true }),
         provideRouter(appRoutes),
         provideEnvironmentNgxMask(),
-        provideAnimations(),
+        // provideAnimations(),
+        provideAnimationsAsync(),
     ],
 };
